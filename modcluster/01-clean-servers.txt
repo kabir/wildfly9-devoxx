@@ -1,0 +1,14 @@
+connect
+
+batch
+#Stop and remove all servers and server groups
+:stop-servers(blocking=true)
+
+/host=master/server-config=server-one:remove
+/host=master/server-config=server-two:remove
+/host=master/server-config=server-three:remove
+
+/server-group=main-server-group:remove
+/server-group=other-server-group:remove
+
+run-batch

@@ -1,0 +1,19 @@
+-Start standalone
+
+** CLI
+connect
+/interface=management:read-resource   [point out inet-addr=localhost]
+/interface=management:write-attribute(name=inet-address,value=192.168.1.111)   [non-existant address]
+:reload     [server start fails]
+^C server
+
+quit CLI and restart
+embed-server    [server is in process, no sockets involved]
+/interface=management:write-attribute(name=inet-address,value=localhost)
+reload   [works]
+stop-embedded-server
+
+start server from command line again, and it works
+
+
+

@@ -1,0 +1,32 @@
+#IMPORTANT: this config is not suitable for production use, as it only uses a single network interface
+#for production use the socket bindings used by modcluster (management and advertise) should be only
+#exposed to the internal network, not a public IP
+
+#Start domain binding it to a real IP
+./bin/domain.sh -Djboss.bind.address=192.168.1.102
+
+
+#cleanup existing servers that are enabled by default
+./bin/jboss-cli.sh --file=/Users/kabir/sourcecontrol/examples-and-demos/modcluster/01-clean-servers.txt
+
+#add the IP address 192.168.1.4 to the host aliases (replace with your local IP)
+./bin/jboss-cli.sh --file=/Users/kabir/sourcecontrol/examples-and-demos/modcluster/02-add-virtual-host.txt
+
+./bin/jboss-cli.sh --file=/Users/kabir/sourcecontrol/examples-and-demos/modcluster/02-add-virtual-host.txt
+
+
+#Deploy the demo to our backend servers
+deploy ~/workspace/modcluster-example/load-balancing-demo/target/clustering-demo.war --server-groups=backend-servers
+
+#now set up the default profile to include the mod_cluster load balancer
+./bin/jboss-cli.sh --file=/Users/kabir/sourcecontrol/examples-and-demos/modcluster/04-loadbalancer.txt
+
+#now lets add another server
+/host=master/server-config=backend3:add(group=backend-servers, socket-binding-port-offset=300)
+:start-servers
+/host=master/server-config=backend3/system-property=server.name:add(boot-time=false, value=backend3)
+
+#and remove one
+/host=master/server=backend1:stop
+
+
