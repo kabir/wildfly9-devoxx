@@ -1,6 +1,5 @@
 connect
 
-batch
 #Stop and remove all servers and server groups
 :stop-servers(blocking=true)
 
@@ -11,4 +10,3 @@ batch
 /server-group=main-server-group:remove
 /server-group=other-server-group:remove
 
-run-batch

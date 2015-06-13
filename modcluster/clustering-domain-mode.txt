@@ -12,7 +12,8 @@
 #add the IP address 192.168.1.4 to the host aliases (replace with your local IP)
 ./bin/jboss-cli.sh --file=/Users/kabir/sourcecontrol/examples-and-demos/modcluster/02-add-virtual-host.txt
 
-./bin/jboss-cli.sh --file=/Users/kabir/sourcecontrol/examples-and-demos/modcluster/02-add-virtual-host.txt
+#add the backend servers
+./bin/jboss-cli.sh --file=/Users/kabir/sourcecontrol/examples-and-demos/modcluster/03-add-virtual-host.txt
 
 
 #Deploy the demo to our backend servers

@@ -1,6 +1,5 @@
 connect
 
-batch
 #add  backend server group
 /server-group=backend-servers:add(profile=ha, socket-binding-group=ha-sockets)
 
@@ -12,4 +11,3 @@ batch
 #start the backend servers
 /server-group=backend-servers:start-servers
 
-run-batch
