@@ -11,6 +11,7 @@
         <module>concurrency</module>
         <module>modcluster</module>
         <module>logfileviewer</module>
+        <module>provisioning</module>
     </modules>
     <packaging>pom</packaging>
 

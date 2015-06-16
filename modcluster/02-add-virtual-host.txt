@@ -1,8 +1,8 @@
 connect
 
 
-#add the IP address 192.168.1.102 to the host aliases (REPLACE with your local IP)
-/profile=ha/subsystem=undertow/server=default-server/host=default-host:write-attribute(name=alias, value=[192.168.1.102])
+#The server needs to be started with -Djboss.bind.address=192.168.1.xxx
+/profile=ha/subsystem=undertow/server=default-server/host=default-host:write-attribute(name=alias, value=[${jboss.bind.address}])
 
 #set the mod_cluster security key
 /profile=ha/subsystem=modcluster/mod-cluster-config=configuration:write-attribute(name=advertise-security-key, value=mypassword)
