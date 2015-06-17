@@ -1,5 +1,5 @@
 #In CLI for a standalone instance
 /subsystem=logging/log-file=server.log:read-log-file(tail=true, lines=1000)
 
-#Can't really run this in CLI, run the example anyway
+#Makes no sense really to run this in CLI, but run the example anyway
 /subsystem=logging/log-file=server.log:read-attribute(name=stream)

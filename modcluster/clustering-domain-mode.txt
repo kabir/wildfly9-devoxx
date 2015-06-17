@@ -2,6 +2,8 @@
 #for production use the socket bindings used by modcluster (management and advertise) should be only
 #exposed to the internal network, not a public IP
 
+#Note this will not work on WildFly 9.0.0.CR2, use .CR1 or .Final
+
 #Start domain binding it to a real IP (replace with your real IP)
 ./bin/domain.sh -Djboss.bind.address=192.168.1.102
 

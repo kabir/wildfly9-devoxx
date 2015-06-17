@@ -5,6 +5,7 @@ connect
 
 #add backend servers, using the ha profile so mod_cluster support is included
 /host=master/server-config=backend1:add(group=backend-servers, socket-binding-port-offset=100)
+
 /host=master/server-config=backend2:add(group=backend-servers, socket-binding-port-offset=200)
 
 

@@ -37,7 +37,7 @@ import org.jboss.dmr.ModelNode;
 public class Main {
     public static void main(String[] args) throws Exception {
         /*
-         * Do a /subsystem=logging/log-file=server.log:read-attribute
+         * Do a /subsystem=logging/log-file=server.log:read-attribute(name=stream)
          */
         final ModelNode op = new ModelNode();
         op.get("operation").set("read-attribute");
@@ -60,7 +60,11 @@ public class Main {
                 throw new RuntimeException(result.get("failure-description").asString());
             }
             String streamId = result.get("result").asString();
-            ;
+
+
+            System.out.println();
+            System.out.println();
+            System.out.println("================== LOG FILE CONTENTS");
 
             //Consume the stream
             try (final InputStream in = new BufferedInputStream(

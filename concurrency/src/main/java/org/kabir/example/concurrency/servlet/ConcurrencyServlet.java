@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Kabir Khan
  */
-@WebServlet(urlPatterns = "/test",
+@WebServlet(urlPatterns = "/",
         asyncSupported = true)
 public class ConcurrencyServlet extends HttpServlet {
 
@@ -36,13 +36,14 @@ public class ConcurrencyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req,
                          HttpServletResponse resp)
             throws ServletException, IOException {
+        int milliSeconds = getMilliSeconds(req);
         AsyncContext asycnCtx
                 = req.startAsync(req, resp);
 
         executor.execute(
                 new LongRunningJob(
                         asycnCtx,
-                        getMilliSeconds(req)));
+                        milliSeconds));
     }
 
     private static class LongRunningJob implements Runnable {
