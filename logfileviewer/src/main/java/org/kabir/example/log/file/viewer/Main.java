@@ -38,6 +38,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         /*
          * Do a /subsystem=logging/log-file=server.log:read-attribute(name=stream)
+         * which does not look very informative in the CLI
          */
         final ModelNode op = new ModelNode();
         op.get("operation").set("read-attribute");

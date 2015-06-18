@@ -3,6 +3,7 @@
 #exposed to the internal network, not a public IP
 
 #Note this will not work on WildFly 9.0.0.CR2, use .CR1 or .Final
+#This is taken from Stuart Douglas' interview at https://www.youtube.com/watch?v=xa_gtRDpwyQ
 
 #Start domain binding it to a real IP (replace with your real IP)
 ./bin/domain.sh -Djboss.bind.address=192.168.1.102
@@ -11,7 +12,7 @@
 #cleanup existing servers that are enabled by default
 ./bin/jboss-cli.sh --file=/Users/kabir/sourcecontrol/examples-and-demos/modcluster/01-clean-servers.txt
 
-#add the IP address to the host aliases
+#add the IP address to the host aliases - CHANGE this file to use the real IP address
 ./bin/jboss-cli.sh --file=/Users/kabir/sourcecontrol/examples-and-demos/modcluster/02-add-virtual-host.txt
 
 #add the backend servers
